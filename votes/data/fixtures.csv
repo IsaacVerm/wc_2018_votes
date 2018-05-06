@@ -1,0 +1,65 @@
+round;date;home_team;away_team
+1;2018-06-14 18:00;Russia;Saudi Arabia
+1;2018-06-15 15:00;Egypt;Uruguay
+1;2018-06-15 18:00;Morocco;Iran
+1;2018-06-15 21:00;Portugal;Spain
+1;2018-06-16 13:00;France;Australia
+1;2018-06-16 16:00;Argentina;Iceland
+1;2018-06-16 19:00;Peru;Denmark
+1;2018-06-16 22:00;Croatia;Nigeria
+1;2018-06-17 15:00;Costa Rica;Serbia
+1;2018-06-17 18:00;Germany;Mexico
+1;2018-06-17 21:00;Brazil;Switzerland
+1;2018-06-18 15:00;Sweden;Korea Republic
+1;2018-06-18 18:00;Belgium;Panama
+1;2018-06-18 21:00;Tunisia;England
+1;2018-06-19 15:00;Colombia;Japan
+1;2018-06-19 18:00;Poland;Senegal
+2;2018-06-19 21:00;Russia;Egypt
+2;2018-06-20 15:00;Portugal;Morocco
+2;2018-06-20 18:00;Uruguay;Saudi Arabia
+2;2018-06-20 21:00;Iran;Spain
+2;2018-06-21 15:00;Denmark;Australia
+2;2018-06-21 18:00;France;Peru
+2;2018-06-21 21:00;Argentina;Croatia
+2;2018-06-22 15:00;Brazil;Costa Rica
+2;2018-06-22 18:00;Nigeria;Iceland
+2;2018-06-22 21:00;Serbia;Switzerland
+2;2018-06-23 15:00;Belgium;Tunisia
+2;2018-06-23 18:00;Korea Republic;Mexico
+2;2018-06-23 21:00;Germany;Sweden
+2;2018-06-24 15:00;England;Panama
+2;2018-06-24 18:00;Japan;Senegal
+2;2018-06-24 21:00;Poland;Colombia
+3;2018-06-25 17:00;Uruguay;Russia
+3;2018-06-25 17:00;Saudi Arabia;Egypt
+3;2018-06-25 21:00;Iran;Portugal
+3;2018-06-25 21:00;Spain;Morocco
+3;2018-06-26 17:00;Denmark;France
+3;2018-06-26 17:00;Australia;Peru
+3;2018-06-26 21:00;Nigeria;Argentina
+3;2018-06-26 21:00;Iceland;Croatia
+3;2018-06-27 17:00;Mexico;Sweden
+3;2018-06-27 17:00;Korea Republic;Germany
+3;2018-06-27 21:00;Serbia;Brazil
+3;2018-06-27 21:00;Switzerland;Costa Rica
+3;2018-06-28 17:00;Japan;Poland
+3;2018-06-28 17:00;Senegal;Colombia
+3;2018-06-28 21:00;Panama;Tunisia
+3;2018-06-28 21:00;England;Belgium
+Round of 16;2018-06-30 21:00;Winner Group A;"Runner-up Group B	"
+Round of 16;2018-06-30 21:00;Winner Group C;Runner-up Group D
+Round of 16;2018-07-01 17:00;Winner Group B;"Runner-up Group A	"
+Round of 16;2018-07-01 21:00;Winner Group D;Runner-up Group C
+Round of 16;2018-07-02 17:00;Winner Group E;Runner-up Group F
+Round of 16;2018-07-02 21:00;Winner Group G;Runner-up Group H
+Round of 16;2018-07-03 17:00;Winner Group F;Runner-up Group E
+Round of 16;2018-07-03 21:00;Winner Group H;Runner-up Group G
+Quarter Finals;2018-07-06 17:00;To be announced;To be announced
+Quarter Finals;2018-07-06 21:00;To be announced;To be announced
+Quarter Finals;2018-07-07 17:00;To be announced;To be announced
+Quarter Finals;2018-07-07 21:00;To be announced;To be announced
+Semi Finals;2018-07-10 21:00;To be announced;To be announced
+Semi Finals;2018-07-11 21:00;To be announced;To be announced
+Finals;2018-07-14 17:00;To be announced;To be announced
+Finals;2018-07-15 18:00;To be announced;To be announced

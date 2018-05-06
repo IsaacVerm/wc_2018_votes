@@ -25,12 +25,13 @@ SECRET_KEY = 'm#pj71&1vxxa_e6(^lmb-_zw+=lm3kp29lpijv!-q*j9#-su!('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0f86982588114a4bb8741df5a9217119.vfs.cloud9.eu-west-1.amazonaws.com']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'votes.apps.VotesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

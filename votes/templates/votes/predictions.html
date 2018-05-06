@@ -1,0 +1,16 @@
+<table>
+  <tr>
+    <th>game</th>  
+    <th>user</th>
+    <th>goals home team</th> 
+    <th>goals away team</th>
+  </tr>
+  {% for prediction in predictions %} 
+      <tr>
+        <td>{{ prediction.game }}</td>
+        <td>{{ prediction.user }}</td>
+        <td>{{ prediction.goals_home_team }}</td>
+        <td>{{ prediction.goals_away_team }}</td>
+      </tr>
+  {% endfor %}
+</table>

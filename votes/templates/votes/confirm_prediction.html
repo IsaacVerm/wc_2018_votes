@@ -1,1 +1,3 @@
-<p>Congratulations {{ prediction.user }}</p>
+<p>Prediction duly noted {{ prediction.user }}. You predicted {{ prediction.game }} will end in  {{ prediction.goals_home_team }}-{{ prediction.goals_away_team }}.</p>
+
+<p>Click <a href="/votes/{{ selected_game.id }}/predictions">here</a> if you want to see an overview of all the predictions made for this game so far.</p>

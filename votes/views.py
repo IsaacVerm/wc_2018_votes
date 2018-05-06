@@ -15,11 +15,16 @@ def make_prediction(request, game_id):
     return render(request, 'votes/make_prediction.html', context)
     
 def predictions(request, game_id):
-    return HttpResponse('All predictions made')
+    predictions = Prediction.objects.all()
+    context = {'predictions': predictions}
+    
+    return render(request, 'votes/predictions.html', context)
     
 def confirm_prediction(request, game_id):
     prediction = Prediction(game = Game.objects.get(pk=game_id), user = request.POST.get('user'), goals_home_team = request.POST.get('home_goals'), goals_away_team = request.POST.get('away_goals'))
     prediction.save()
     
-    context = {'prediction': prediction}
+    selected_game = Game.objects.get(pk=game_id)
+    
+    context = {'prediction': prediction, 'selected_game': selected_game}
     return render(request, 'votes/confirm_prediction.html', context)

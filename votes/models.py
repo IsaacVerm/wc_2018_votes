@@ -7,7 +7,7 @@ class Game(models.Model):
     away_team = models.CharField(max_length=50, null=True)
     
     def __str__(self):
-        return '%s %s' % (self.home_team, self.away_team)
+        return '%s-%s' % (self.home_team, self.away_team)
     
 class Prediction(models.Model):
     game = models.ForeignKey(Game, on_delete=models.CASCADE, null=True)
@@ -16,6 +16,6 @@ class Prediction(models.Model):
     goals_away_team = models.IntegerField(null=True)
     
     def __str__(self):
-        return '%s-%s' % (self.game, self.user)
+        return '%s %s' % (self.game, self.user)
     
     

@@ -11,7 +11,11 @@ class Game(models.Model):
     
 class Prediction(models.Model):
     game = models.ForeignKey(Game, on_delete=models.CASCADE, null=True)
+    user = models.CharField(max_length=50, null=True)
     goals_home_team = models.IntegerField(null=True)
     goals_away_team = models.IntegerField(null=True)
+    
+    def __str__(self):
+        return '%s-%s' % (self.game, self.user)
     
     

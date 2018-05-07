@@ -15,7 +15,7 @@ def make_prediction(request, game_id):
     return render(request, 'votes/make_prediction.html', context)
     
 def predictions(request, game_id):
-    predictions = Prediction.objects.all()
+    predictions = Prediction.objects.filter(game=Game.objects.get(pk=game_id))
     context = {'predictions': predictions}
     
     return render(request, 'votes/predictions.html', context)

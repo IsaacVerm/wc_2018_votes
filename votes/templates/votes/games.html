@@ -15,8 +15,8 @@
         <td>{{ game.away_team }}</td>
         <td>{{ game.home_goals }}</td>
         <td>{{ game.away_goals }}</td>
-        <td><a href = "/votes/{{ game.id }}">vote</a></td>
-        <td><a href = "/votes/{{ game.id }}/predictions">predictions</a></td>
+        <td><a href = "{{ game.id }}">vote</a></td>
+        <td><a href = "{{ game.id }}/predictions">predictions</a></td>
       </tr>
   {% endfor %}
 </table>

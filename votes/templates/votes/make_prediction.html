@@ -1,6 +1,6 @@
 <h1>{{ selected_game.home_team }} - {{ selected_game.away_team }}</h1>
 
-<form action="/votes/{{ selected_game.id }}/confirm_prediction" method="post">
+<form action="/votes/games/{{ selected_game.id }}/confirm_prediction" method="post">
     {% csrf_token %}
     my name:
     <select name="user">
@@ -41,4 +41,4 @@
     <input type="submit" value="confirm prediction" />
 </form>
 
-<a href='/votes'>Go back to games screen.</a>
+<a href='/votes/games'>Go back to games screen.</a>

@@ -2,6 +2,9 @@ from django.shortcuts import render
 from .models import Game, Prediction, User
 from django.http import HttpResponseRedirect, HttpResponse # temp for placeholders
 
+def options(request):
+    return render(request, 'votes/options.html')
+
 def games(request):
     games = Game.objects.all()
     context = {'games': games}

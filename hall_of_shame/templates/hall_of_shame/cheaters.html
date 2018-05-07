@@ -1,0 +1,16 @@
+<h1>Cheaters</h1>
+
+<p>The following people have cheated at least one time:</p>
+
+<table>
+  <tr>
+    <th>name</th>
+    <th>times cheated</th>
+  </tr>
+  {% for cheater in cheaters %} 
+      <tr>
+        <td>{{ cheater.name }}</td>
+        <td>{{ cheater.times_cheated }}</td>
+      </tr>
+  {% endfor %}
+</table>

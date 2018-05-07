@@ -28,3 +28,4 @@ def confirm_prediction(request, game_id):
     
     context = {'prediction': prediction, 'selected_game': selected_game}
     return render(request, 'votes/confirm_prediction.html', context)
+    

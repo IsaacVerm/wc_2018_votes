@@ -7,4 +7,4 @@ class User(models.Model):
     times_cheated = models.IntegerField(default=0)
     
     def __str__(self):
-        return '%s-%s' % (self.home_team, self.away_team)
+        return '%s' % (self.name)

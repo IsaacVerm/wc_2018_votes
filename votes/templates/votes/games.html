@@ -4,6 +4,8 @@
     <th>date</th> 
     <th>home team</th>
     <th>away team</th>
+    <th>home goals</th>
+    <th>away goals</th>
   </tr>
   {% for game in games %} 
       <tr>
@@ -11,6 +13,8 @@
         <td>{{ game.date }}</td>
         <td>{{ game.home_team }}</td>
         <td>{{ game.away_team }}</td>
+        <td>{{ game.home_goals }}</td>
+        <td>{{ game.away_goals }}</td>
         <td><a href = "/votes/{{ game.id }}">vote</a></td>
         <td><a href = "/votes/{{ game.id }}/predictions">predictions</a></td>
       </tr>

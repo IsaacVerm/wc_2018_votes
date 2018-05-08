@@ -3,3 +3,6 @@ from django.http import HttpResponse # temp for placeholders
 
 def options(request):
     return render(request, 'base/options.html')
+    
+def about(request):
+    return render(request, 'base/about.html')

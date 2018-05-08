@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import Game, Prediction, User
-from django.http import HttpResponseRedirect, HttpResponse # temp for placeholders
+from .models import Game, Prediction, User, Score
+from django.http import HttpResponse # temp for placeholders
 
 def options(request):
     return render(request, 'votes/options.html')
@@ -11,6 +11,44 @@ def games(request):
     
     return render(request, 'votes/games.html', context)
     
+def users(request):
+    return render(request, 'votes/users.html')
+    
+def ranking(request):
+    # check which games are finished
+    for game in Game.objects.all():
+        game.is_finished()
+        game.save()
+    
+    # get all predictions for finished games
+    predictions = Prediction.objects.filter(game__finished = True)
+    
+    # flush out previous calculated scores (one-to-one relation between Prediction and Score)
+    Score.objects.all().delete()
+    
+    # check if points are scored for each prediction
+    for prediction in predictions:
+        score = Score(prediction = prediction)
+        score.points_scored()
+        score.save()
+        
+    # setup dictionary for total points by users
+    users = User.objects.all()
+    
+    total_points_by_user = {}
+    for user in users:
+        total_points_by_user[user.name] = 0
+    
+    # calculate total points by user
+    for user in users:
+        scores = Score.objects.filter(prediction__user__name = user.name)
+        
+        for score in scores:
+            total_points_by_user[user.name] += score.points
+            
+    context = {'total_points_by_user': total_points_by_user}
+    return render(request, 'votes/ranking.html', context)
+    
 def make_prediction(request, game_id):
     selected_game = Game.objects.get(pk=game_id)
     
@@ -20,7 +58,6 @@ def make_prediction(request, game_id):
 def predictions(request, game_id):
     predictions = Prediction.objects.filter(game__id = game_id)
     
-    print(predictions.count())
     if predictions.count() == 0:
         return render(request, 'votes/no_predictions_yet.html')
     

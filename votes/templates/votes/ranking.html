@@ -1,0 +1,12 @@
+<table>
+  <tr>
+    <th>name</th>
+    <th>points</th>
+  </tr>
+  {% for name, points in total_points_by_user.items %} 
+      <tr>
+        <td>{{ name }}</td>
+        <td>{{ points }}</td>
+      </tr>
+  {% endfor %}
+</table>

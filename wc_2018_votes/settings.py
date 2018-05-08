@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['0f86982588114a4bb8741df5a9217119.vfs.cloud9.eu-west-1.amazonaw
 # Application definition
 
 INSTALLED_APPS = [
+    'base.apps.BaseConfig',
     'hall_of_shame.apps.HallOfShameConfig',
     'votes.apps.VotesConfig',
     'django.contrib.admin',

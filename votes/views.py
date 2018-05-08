@@ -65,19 +65,28 @@ def predictions(request, game_id):
     return render(request, 'votes/predictions.html', context)
     
 def confirm_prediction(request, game_id):
+    # get submitted prediction
     name_submitted = request.POST.get('user')
     home_goals_submitted = request.POST.get('home_goals')
     away_goals_submitted = request.POST.get('away_goals')
     
+    # select game and user
     selected_game = Game.objects.get(pk=game_id)
     selected_user = User.objects.get(name = name_submitted)
     
+    # 1 prediction per game per user
+    previous_predictions = Prediction.objects.filter(game__id = selected_game.id, user__name = selected_user.name)
+    if previous_predictions.count() > 0:
+        return render(request, 'votes/already_prediction.html')
+    
+    # save prediction
     prediction = Prediction(game = selected_game,
                             user = selected_user,
                             predicted_goals_home = home_goals_submitted,
                             predicted_goals_away = away_goals_submitted)
     prediction.save()
     
+    # render confirmation screen
     context = {'prediction': prediction}
     return render(request, 'votes/confirm_prediction.html', context)
     

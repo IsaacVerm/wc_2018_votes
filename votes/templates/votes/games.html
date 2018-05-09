@@ -1,22 +1,32 @@
-<table>
-  <tr>
-    <th>round</th>
-    <th>date</th> 
-    <th>home team</th>
-    <th>away team</th>
-    <th>home goals</th>
-    <th>away goals</th>
-  </tr>
-  {% for game in games %} 
-      <tr>
-        <td>{{ game.round }}</td>
-        <td>{{ game.date }}</td>
-        <td>{{ game.home_team }}</td>
-        <td>{{ game.away_team }}</td>
-        <td>{{ game.home_goals }}</td>
-        <td>{{ game.away_goals }}</td>
-        <td><a href = "{{ game.id }}">vote</a></td>
-        <td><a href = "{{ game.id }}/predictions">predictions</a></td>
-      </tr>
-  {% endfor %}
-</table>
+{% extends 'votes/navigation_bar.html' %}
+
+{% block content %}
+  <table>
+    <tr>
+      <th>round</th>
+      <th>date</th> 
+      <th>home team</th>
+      <th>away team</th>
+      <th>home goals</th>
+      <th>away goals</th>
+    </tr>
+    {% for game in games %} 
+        <tr>
+          <td>{{ game.round }}</td>
+          <td>{{ game.date }}</td>
+          <td>{{ game.home_team }}</td>
+          <td>{{ game.away_team }}</td>
+          <td>{{ game.home_goals }}</td>
+          <td>{{ game.away_goals }}</td>
+          
+          {% if game.predictions_available %}
+            <td><a href="{% url 'predictions' game.id %}">predictions</a></td>
+          {% endif %}
+          
+          {% if game.votable %}
+            <td><a href="{% url 'make_prediction' game.id %}">make prediction</a></td>
+          {% endif %}
+        </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

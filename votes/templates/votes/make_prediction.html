@@ -1,44 +1,33 @@
-<h1>{{ selected_game.home_team }} - {{ selected_game.away_team }}</h1>
+{% extends 'votes/navigation_bar.html' %}
 
-<form action="/votes/games/{{ selected_game.id }}/confirm_prediction" method="post">
-    {% csrf_token %}
-    my name:
-    <select name="user">
-        <option value="Isaac">Isaac</option>
-        <option value="Boris">Boris</option>
-    </select>
-    <br>
+{% block content %}
+    <h1>{{ selected_game.home_team }} - {{ selected_game.away_team }}</h1>
     
-    number of goals scored by {{ selected_game.home_team }}:
-    <select name="home_goals">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-    </select>
-    <br>
-    number of goals scored by {{ selected_game.away_team }}:
-    <select name="away_goals">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-    </select>
-    <br><br>
-    
-    <input type="submit" value="confirm prediction" />
-</form>
-
-<a href='/votes/games'>Go back to games screen.</a>
+    <form action="{% url 'confirm_prediction' selected_game.id %}" method="post">
+        {% csrf_token %}
+        my name:
+        <select name="user">
+            {% for user in users %}
+                <option value= {{ user.name }}>{{ user.name }}</option>
+            {% endfor %}
+        </select>
+        <br>
+            
+        number of goals scored by {{ selected_game.home_team }}:
+        <select name="home_goals">
+            {% for number_of_goals in range_of_goals_allowed %}
+                <option value = {{ number_of_goals }}>{{ number_of_goals }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        number of goals scored by {{ selected_game.away_team }}:
+        <select name="away_goals">
+            {% for number_of_goals in range_of_goals_allowed %}
+                <option value = {{ number_of_goals }}>{{ number_of_goals }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        
+        <input type="submit" value="confirm prediction" />
+    </form>
+{% endblock %}

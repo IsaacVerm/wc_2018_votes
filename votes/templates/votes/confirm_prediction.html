@@ -1,6 +1,8 @@
-<p>Prediction duly noted {{ prediction.user }}.
-You predicted {{ prediction.game.home_team }}-{{ prediction.game.away_team }} will end in {{ prediction.predicted_goals_home }}-{{ prediction.predicted_goals_away }}.</p>
+{% extends 'votes/navigation_bar.html' %}
 
-<p>Click <a href="/votes/games/{{ prediction.game.id }}/predictions">here</a> if you want to see an overview of all the predictions made for this game so far.</p>
-
-<a href='/votes/games'>Go back to games screen.</a>
+{% block content %}
+    <p>Prediction duly noted {{ prediction.user }}.
+    You predicted {{ prediction.game.home_team }}-{{ prediction.game.away_team }} will end in {{ prediction.predicted_goals_home }}-{{ prediction.predicted_goals_away }}.</p>
+    
+    <p>Click <a href="{% url 'predictions' prediction.game.id %}">here</a> if you want to see an overview of all the predictions made for this game so far.</p>
+{% endblock %}

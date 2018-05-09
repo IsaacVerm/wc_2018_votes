@@ -1,0 +1,15 @@
+{% extends 'base/navigation_bar.html' %}
+
+{% block css_override %}
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/votes.css' %}">
+{% endblock %}
+
+{% block body %}
+    <ul class="sub_navigation_bar">
+        <li><a href="{% url 'games' %}">games</a></li>
+        <li><a href="{% url 'ranking' %}">ranking</a></li>
+    </ul>
+    {% block content %}
+    {% endblock %}
+{% endblock %}

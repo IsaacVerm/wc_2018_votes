@@ -1,0 +1,20 @@
+{% load staticfiles %}
+
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        {% block css_override %}
+        {% endblock %}
+    </head>
+    <body>
+        <ul class="main_navigation_bar">
+            <li><a href="{% url 'homepage' %}">Homepage</a></li>
+            <li><a href='/votes'>Predictions</a></li>
+            <li><a href='/hall_of_shame'>Hall of Shame</a></li>
+            <li style="float:right"><a href="/about">About</a></li>
+        </ul>
+        {% block body %}
+        {% endblock %}
+    </body>
+</html>
+

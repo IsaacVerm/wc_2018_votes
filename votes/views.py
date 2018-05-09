@@ -2,17 +2,25 @@ from django.shortcuts import render
 from .models import Game, Prediction, User, Score
 from django.http import HttpResponse # temp for placeholders
 
-def options(request):
-    return render(request, 'votes/options.html')
+def index(request):
+    return render(request, 'votes/index.html')
 
 def games(request):
+    # get all games
     games = Game.objects.all()
-    context = {'games': games}
     
+    # check which games can be voted on/have predictions
+    for game in games:
+        game.can_be_voted_on()
+        game.has_predictions()
+        game.save()
+    
+    # render
+    context = {'games': games}
     return render(request, 'votes/games.html', context)
     
-def users(request):
-    return render(request, 'votes/users.html')
+def profile(request):
+    return render(request, 'votes/profile.html')
     
 def ranking(request):
     # check which games are finished
@@ -50,16 +58,19 @@ def ranking(request):
     return render(request, 'votes/ranking.html', context)
     
 def make_prediction(request, game_id):
+    # setup context
     selected_game = Game.objects.get(pk=game_id)
+    range_of_goals_allowed = range(0, 10)
+    users = User.objects.all()
     
-    context = {'selected_game': selected_game}
+    context = {'selected_game': selected_game,
+               'range_of_goals_allowed': range_of_goals_allowed,
+               'users': users
+    }
     return render(request, 'votes/make_prediction.html', context)
     
 def predictions(request, game_id):
     predictions = Prediction.objects.filter(game__id = game_id)
-    
-    if predictions.count() == 0:
-        return render(request, 'votes/no_predictions_yet.html')
     
     context = {'predictions': predictions}
     return render(request, 'votes/predictions.html', context)

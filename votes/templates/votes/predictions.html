@@ -1,18 +1,20 @@
-<h1>{{ predictions.first.game.home_team }}-{{ predictions.first.game.away_team }}</h1>
+{% extends 'votes/navigation_bar.html' %}
 
-<table>
-  <tr>
-    <th>user</th>
-    <th>goals {{ predictions.first.game.home_team }}</th> 
-    <th>goals {{ predictions.first.game.away_team }}</th>
-  </tr>
-  {% for prediction in predictions %} 
-      <tr>
-        <td>{{ prediction.user }}</td>
-        <td>{{ prediction.predicted_goals_home }}</td>
-        <td>{{ prediction.predicted_goals_away }}</td>
-      </tr>
-  {% endfor %}
-</table>
-
-<a href='/votes/games'>Go back to games screen.</a>
+{% block content %}
+  <h1>{{ predictions.first.game.home_team }}-{{ predictions.first.game.away_team }}</h1>
+  
+  <table>
+    <tr>
+      <th>user</th>
+      <th>goals {{ predictions.first.game.home_team }}</th> 
+      <th>goals {{ predictions.first.game.away_team }}</th>
+    </tr>
+    {% for prediction in predictions %} 
+        <tr>
+          <td>{{ prediction.user }}</td>
+          <td>{{ prediction.predicted_goals_home }}</td>
+          <td>{{ prediction.predicted_goals_away }}</td>
+        </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

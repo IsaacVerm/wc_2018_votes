@@ -15,7 +15,6 @@ class Game(models.Model):
     
     def has_predictions(self):
         predictions = Prediction.objects.filter(game__id = self.id)
-        print(predictions)
         
         if predictions.count() > 0:
             self.predictions_available = True

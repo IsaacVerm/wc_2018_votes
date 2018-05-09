@@ -9,11 +9,23 @@ def games(request):
     # get all games
     games = Game.objects.all()
     
-    # check which games can be voted on/have predictions
+    # check status games
     for game in games:
         game.can_be_voted_on()
         game.has_predictions()
+        game.is_finished()
         game.save()
+        
+    # flush out previous calculated scores (one-to-one relation between Prediction and Score)
+    Score.objects.all().delete()
+    
+    # calculate score for finished games
+    finished_predictions = Prediction.objects.filter(game__finished = True)
+    
+    for prediction in finished_predictions:
+        score = Score(prediction = prediction)
+        score.points_scored()
+        score.save()
     
     # render
     context = {'games': games}
@@ -74,6 +86,22 @@ def predictions(request, game_id):
     
     context = {'predictions': predictions}
     return render(request, 'votes/predictions.html', context)
+    
+def results(request, game_id):
+    # get scores
+    scores = Score.objects.filter(prediction__game_id = game_id)
+    
+    # setup context
+    game = scores.first().prediction.game
+    context = {'home_team': game.home_team,
+               'away_team': game.away_team,
+               'home_goals': game.home_goals,
+               'away_goals': game.away_goals,
+               'scores': scores
+               }
+    
+    # render
+    return render(request, 'votes/results.html', context)
     
 def confirm_prediction(request, game_id):
     # get submitted prediction

@@ -19,13 +19,18 @@
           <td>{{ game.home_goals }}</td>
           <td>{{ game.away_goals }}</td>
           
-          {% if game.predictions_available %}
-            <td><a href="{% url 'predictions' game.id %}">predictions</a></td>
-          {% endif %}
-          
           {% if game.votable %}
             <td><a href="{% url 'make_prediction' game.id %}">make prediction</a></td>
           {% endif %}
+          
+          {% if game.predictions_available and not game.finished %}
+            <td><a href="{% url 'predictions' game.id %}">predictions</a></td>
+          {% endif %}
+          
+          {% if game.finished and game.predictions_available %}
+            <td><a href="{% url 'results' game.id %}">results</a></td>
+          {% endif %}
+          
         </tr>
     {% endfor %}
   </table>

@@ -1,0 +1,24 @@
+{% extends 'votes/navigation_bar.html' %}
+
+{% block content %}
+    
+    <h1>{{ home_team }}-{{ away_team }} {{ home_goals }}-{{ away_goals }}</h1>
+  
+    <table>
+    <tr>
+      <th>user</th>
+      <th>predicted goals {{ home_team }}</th>
+      <th>predicted goals {{ away_team }}</th>
+      <th>points</th>
+    </tr>
+    {% for score in scores %} 
+        <tr>
+          <td>{{ score.prediction.user.name }}</td>
+          <td>{{ score.prediction.predicted_goals_home }}</td>
+          <td>{{ score.prediction.predicted_goals_away }}</td>
+          <td>{{ score.points }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+    
+{% endblock %}

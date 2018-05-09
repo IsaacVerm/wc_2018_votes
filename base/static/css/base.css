@@ -1,14 +1,9 @@
-/*navigation bar*/
-
+/*common to all navigation bars*/
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-}
-
-ul.main_navigation_bar {
-    background-color: #A9A9A9;
 }
 
 li {
@@ -29,6 +24,12 @@ li a:hover {
 
 .active {
     background-color: #4CAF50;
+}
+
+
+/*main navigation bar*/
+ul.main_navigation_bar {
+    background-color: #A9A9A9;
 }
 
 /*table*/

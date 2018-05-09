@@ -1,13 +1,21 @@
-<h1>Debtors</h1>
+{% extends 'base/navigation_bar.html' %}
 
-<p>The following people should be summarily executed:</p>
+{% block body %}
+    
+    <p>The following people should be summarily executed since they still haven't paid:</p>
+    
+    <table>
+        <tr>
+          <th>name</th>
+        </tr>
+        <tr>
+            {% for debtor in debtors %}
+                <td>{{ debtor.name }}</td>
+            {% endfor %}
+        </tr>
+    </table>
+    
+    <p>However, since the power of the Voting Commitee is rather limited in matters of life and death, consider the inclusion of your name
+    in this list an incentive to pay.</p>
 
-<ul>
-    {% for debtor in debtors %}
-    <li>{{ debtor.name }}</li>
-    {% endfor %}
-</ul>
-
-<p>However, since the power of the Voting Commitee is rather limited in matters of life and death, consider the inclusion of your name
-in this list an incentive to pay.</p>
-
+{% endblock %}

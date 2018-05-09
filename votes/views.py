@@ -31,8 +31,11 @@ def games(request):
     context = {'games': games}
     return render(request, 'votes/games.html', context)
     
-def profile(request):
-    return render(request, 'votes/profile.html')
+def profile(request, user_name):
+    scores = Score.objects.filter(prediction__user__name = user_name)
+    
+    context = {'scores': scores}
+    return render(request, 'votes/profile.html', context)
     
 def ranking(request):
     # check which games are finished

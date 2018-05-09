@@ -1,12 +1,18 @@
-<table>
-  <tr>
-    <th>name</th>
-    <th>points</th>
-  </tr>
-  {% for name, points in total_points_by_user.items %} 
-      <tr>
-        <td>{{ name }}</td>
-        <td>{{ points }}</td>
-      </tr>
-  {% endfor %}
-</table>
+{% extends 'votes/navigation_bar.html' %}
+
+{% block content %}
+
+  <table>
+    <tr>
+      <th>name</th>
+      <th>points</th>
+    </tr>
+    {% for name, points in total_points_by_user.items %} 
+        <tr>
+          <td><a href="{% url 'profile' name %}">{{ name }}</a></td>
+          <td>{{ points }}</td>
+        </tr>
+    {% endfor %}
+  </table>
+
+{% endblock %}

@@ -27,7 +27,7 @@
             <td><a href="{% url 'predictions' game.id %}">predictions</a></td>
           {% endif %}
           
-          {% if game.finished and game.predictions_available %}
+          {% if game.predictions_available and game.finished %}
             <td><a href="{% url 'results' game.id %}">results</a></td>
           {% endif %}
           

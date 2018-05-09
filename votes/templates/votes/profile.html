@@ -1,4 +1,26 @@
-<ul>
-    <li><a href='ranking/'>ranking</a></li>
-    <li><a href='profile/'>profile</a></li>
-</ul>
+{% extends 'votes/navigation_bar.html' %}
+
+{% block content %}
+
+    <table>
+        <tr>
+          <th>name</th>
+          <th>game</th>
+          <th>date</th>
+          <th>actual result</th>
+          <th>predicted result</th>
+          <th>points</th>
+        </tr>
+        {% for score in scores %} 
+            <tr>
+              <td>{{ score.prediction.user.name }}</td>
+              <td>{{ score.prediction.game.home_team }}-{{ score.prediction.game.away_team }}</td>
+              <td>{{ score.prediction.game.date }}</td>
+              <td>{{ score.prediction.game.home_goals }}-{{ score.prediction.game.away_goals }}</td>
+              <td>{{ score.prediction.predicted_goals_home }}-{{ score.prediction.predicted_goals_away }}</td>
+              <td>{{ score.points }}</td>
+            </tr>
+        {% endfor %}
+      </table>
+
+{% endblock %}
